@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+{% block content %}
+<h2>Attendees</h2>
+<p><a href="{{ url_for('add_attendee') }}">+ Register Attendee</a></p>
+<table>
+  <tr><th>Name</th><th>Email</th><th>Phone</th><th>Event</th><th>Actions</th></tr>
+  {% for a in attendees %}
+  <tr>
+    <td>{{ a.name }}</td>
+    <td>{{ a.email }}</td>
+    <td>{{ a.phone }}</td>
+    <td>{{ a.event_title or '—' }} {% if a.event_date %} ({{ a.event_date }}){% endif %}</td>
+    <td>
+      <a href="{{ url_for('edit_attendee', id=a.id) }}">Edit</a> |
+      <a href="{{ url_for('delete_attendee', id=a.id) }}" onclick="return confirmDeleteAttendee();">Delete</a>
+    </td>
+  </tr>
+  {% else %}
+  <tr><td colspan="5">No attendees yet.</td></tr>
+  {% endfor %}
+</table>
+{% endblock %}

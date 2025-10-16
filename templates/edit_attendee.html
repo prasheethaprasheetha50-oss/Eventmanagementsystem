@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+{% block content %}
+<h2>Edit Attendee</h2>
+<form method="POST" onsubmit="return validateAttendeeForm();">
+  <label>Name</label><br>
+  <input id="name" name="name" type="text" value="{{ attendee.name }}"><br>
+  <label>Email</label><br>
+  <input id="email" name="email" type="email" value="{{ attendee.email }}"><br>
+  <label>Phone</label><br>
+  <input name="phone" type="text" value="{{ attendee.phone }}"><br>
+  <label>Event</label><br>
+  <select name="event_id">
+    {% for e in events %}
+      <option value="{{ e.id }}" {% if e.id == attendee.event_id %}selected{% endif %}>{{ e.title }}</option>
+    {% endfor %}
+  </select><br><br>
+  <button type="submit">Update</button>
+</form>
+{% endblock %}

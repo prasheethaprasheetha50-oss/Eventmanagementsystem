@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+{% block content %}
+<h2>Tickets</h2>
+<table>
+  <tr><th>Event</th><th>Capacity</th><th>Sold</th><th>Available</th><th>Price</th></tr>
+  {% for t in tickets %}
+  <tr>
+    <td>{{ t.title }}</td>
+    <td>{{ t.capacity }}</td>
+    <td>{{ t.sold }}</td>
+    <td>{{ t.available }}</td>
+    <td>₹{{ "%.2f"|format(t.ticket_price or 0) }}</td>
+  </tr>
+  {% else %}
+  <tr><td colspan="5">No events</td></tr>
+  {% endfor %}
+</table>
+{% endblock %}

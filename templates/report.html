@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+{% block content %}
+<h2>Revenue Report</h2>
+<table>
+  <tr><th>Event</th><th>Tickets Sold</th><th>Revenue</th></tr>
+  {% for r in report %}
+  <tr>
+    <td>{{ r.title }}</td>
+    <td>{{ r.sold }}</td>
+ <td>₹{{ "%.2f"|format(r.revenue or 0) }}</td>
+  </tr>
+  {% else %}
+  <tr><td colspan="4">No data</td></tr>
+  {% endfor %}
+</table>
+{% endblock %}

@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+{% block content %}
+<h2>Register Attendee</h2>
+<form method="POST" onsubmit="return validateAttendeeForm();">
+  <label>Name</label><br>
+  <input id="name" name="name" type="text"><br>
+  <label>Email</label><br>
+  <input id="email" name="email" type="email"><br>
+  <label>Phone</label><br>
+  
+  <input name="phone" type="text"><br>
+  <label>Event</label><br>
+  
+  <select name="event_id">
+    {% for e in events %}
+      <option value="{{ e.id }}">{{ e.title }} - {{ e.date }}</option>
+    {% endfor %}
+  </select><br><br>
+  <button type="submit">Register</button>
+  <button type="submit">Cancel</button>
+</form>
+{% endblock %}

@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+{% block content %}
+<h2>Edit Event</h2>
+<form method="POST" onsubmit="return validateEventForm();">
+  <label>Title</label><br>
+  <input id="title" name="title" type="text" value="{{ event.title }}"><br>
+  <label>Description</label><br>
+  <textarea name="description">{{ event.description }}</textarea><br>
+  <label>Date</label><br>
+  <input id="date" name="date" type="date" value="{{ event.date }}"><br>
+  <label>Location</label><br>
+  <input name="location" type="text" value="{{ event.location }}"><br>
+  <label>Capacity</label><br>
+  <input id="capacity" name="capacity" type="number" value="{{ event.capacity }}"><br>
+  <label>Ticket Price (₹)</label><br>
+  <input name="ticket_price" type="number" step="0.01" value="{{ event.ticket_price }}"><br><br>
+  <button type="submit">Update</button>
+  <button type="submit">Cancel</button>
+  
+</form>
+{% endblock %}
